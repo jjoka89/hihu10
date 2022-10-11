@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load static %}   <!--정적 파일을 로드한다.-->
+<html lang="ko">
+<html>
+<head>
+    <title>{% block head_title %}Blog{% endblock %}</title>   <!--페이지 기본 제목 Blog 설정-->
+    <link rel="stylesheet" href="{% static 'blog/bootstrap/bootstrap.min.css' %}" media="screen">
+    <link href="css/blog-post.css" rel="stylesheet">
+</head>
+<header class="py-1 bg-light border-bottom mb-4">
+    <div class="container">
+        <div class="text-center my-5">
+            <h1 class="fw-bolder"></h1>     <!--header영역 중앙 부분에 '게시물' 삽입-->
+        </div>
+    </div>
+</header>
+
+<body>
+    {% include 'blog/navbar.html' %}    <!--blog/navbar.html 코드 포함-->
+    <div class="container my-3">
+        <div class="row">
+            <div class="col-12" id="main-area">
+                {% block main_area %}   <!--post_list.html의 main_area부분 or post_detail.html의 main_area부분 선택해서 사용-->
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+
+    {% include 'blog/footer.html' %}    <!--blog/footer.html코드 사용-->
+</body>
+
+</html>

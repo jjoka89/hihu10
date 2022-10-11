@@ -1,0 +1,216 @@
+{% load socialaccount %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewpor0t" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="hihucss/reset.css">
+  <link rel="stylesheet" href="hihucss/demoMain.css">
+  <link rel="stylesheet" href="hihucss/footer.css">
+  <link rel="stylesheet" href="hihucss/hihuModal.css">
+  <title>서산</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+
+<style>
+  .header_profile {
+    height: 70vmax;
+    /*border: 3px solid RGB(33, 37, 41);
+  border-radius: 50%;*/
+    background-image: url(../hihuImgs/hihuLogo.png);
+    background-size: 60vmin 60vmin;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  /* 내비게이션 영역 */
+  .navbar-default {
+    /* 배경색상 */
+    background-color: RGB(33, 37, 41);
+    border-color: RGB(33, 37, 41);
+  }
+
+  .navbar-default .navbar-brand {
+    color: white;
+    font-size: 2rem;
+    padding-left: 10px;
+  }
+
+  .navbar-default .navbar-toggler {
+    /* 햄버거부분 태두리 */
+    background-color: white;
+    font-size: 2rem;
+  }
+
+  .navbar-default .navbar-toggler-icon {
+    font-size: 1.5rem;
+  }
+
+  * {
+    font-size: 4vmin;
+  }
+
+  .d-flex .btn-outline-success {
+    /*검색버튼*/
+    color: RGB(33, 37, 41);
+    background-color: white;
+  }
+
+  .d-flex .btn-outline-success:hover {
+    /*검색버튼*/
+    background-color: transparent;
+    color: white;
+  }
+
+  .back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3em;
+    width: 3em;
+    position: fixed;
+    bottom: 1em;
+    left: 1em;
+    border: 3px solid RGB(33, 37, 41);
+    border-radius: 10%;
+    color: white;
+    background-color: RGB(33, 37, 41);
+  }
+  .modal .modal-dialog{
+    position: fixed;
+    left: 10%;
+    top: 25%;
+    margin: auto;
+    min-width: 20em;
+}
+.modal-content{
+    background-image: url(../hihuImgs/AeroSpaceOpa.png);
+    background-size: 70%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-weight: bold;
+}
+.modal-header .modal-title{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    font-size: 7vmin;
+}
+</style>
+
+<body>
+  <nav style="position: relative;" class="navbar navbar-default">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">서산</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a style="color: white;" class="nav-link active dropdown-toggle" role="button" data-bs-toggle="dropdown"
+              aria-current="false page" href="#">학교정보</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="https://www.hanseo.ac.kr/schdList.do?m=0405&s=hs">학사일정</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="/major/">학과정보</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="/faculty_number_list/">학과 부서별 연락처</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="/school_number/">학교 부서별 연락처</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="/blog/dongari/">동아리 정보</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="https://www.hanseo.ac.kr/food/foodView.do?m=0504&s=hs">학식 정보</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="/blog/">소통방</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="https://nportal.hanseo.ac.kr/">한서 포탈</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a style="color: white;" class="nav-link active dropdown-toggle" role="button" data-bs-toggle="dropdown"
+              aria-current="false page" href="#">통합 및 지역버스</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="https://hsu.busro.net:456/rsvc/">셔틀버스 예매 및 결제</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="{% url 'bus' %}">지역버스 시간정보</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a style="color: white;" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              학교주변 정보
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/restaurant/">주변 식당 정보</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a style="color: white;" class="nav-link active dropdown-toggle" role="button" data-bs-toggle="dropdown"
+              aria-current="false page" href="#">캠퍼스 맵</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="https://www.hanseo.ac.kr/sub/info.do?page=011002_1&m=011002&s=hs">캠퍼스
+                  약도</a>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item"
+                  href="https://map.naver.com/v5/search/%ED%95%9C%EC%84%9C%EB%8C%80%ED%95%99%EA%B5%90/place/17593357?c=14090890.3725664,4396075.2412654,18.01,0,0,0,dh&placePath=%3Fentry%253Dbmp&p=j5c36pjGn0vVItl7bvtT8Q,89.35,-8.08,80,Float">로드뷰</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a style="color: white;" class="nav-link active dropdown-toggle" role="button" data-bs-toggle="dropdown"
+              aria-current="false page" href="#">계정 관리</a>
+            <ul class="dropdown-menu">
+              {% if user.is_authenticated %}
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="/blog/logout/">Log Out</a></li>
+            </li>
+            <li><a class="dropdown-item" href="/blog/update_info/">회원정보 수정</a></li>
+            <li><a class="dropdown-item" href="{% url 'password_change' %}">비밀번호 수정</a></li>
+            <li><a class="dropdown-item" href="/blog/mypost/">내가 쓴 글</a></li>
+              {% else %}
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="/blog/login/">Log In</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="/blog/signup/">Sign Up</a></li>
+              {% endif %}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</body>
+
+</html>

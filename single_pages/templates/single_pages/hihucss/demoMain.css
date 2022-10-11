@@ -1,0 +1,50 @@
+.header_profile{ 
+    height: 70vmax;
+    background-image: url(../hihuImgs/hanseoLogoGray.jpg);
+    background-size: 50vmin 50vmin;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+/* 내비게이션 영역 */
+.navbar-default{ /* 배경색상 */
+    background-color: RGB(33, 37, 41);
+    border-color: RGB(33, 37, 41);
+}
+.navbar-default .navbar-brand{
+    color: white;
+    font-size: 2rem;
+    padding-left: 10px;
+}
+.navbar-default .navbar-toggler{ /* 햄버거부분 태두리 */
+    background-color: white;
+    font-size: 2rem;
+}
+.navbar-default .navbar-toggler-icon{
+    font-size: 1.5rem;
+}
+*{
+    font-size: 4vmin;
+}
+.d-flex .btn-outline-success{ /*검색버튼*/
+    color: RGB(33, 37, 41);
+    background-color: white;
+}
+.d-flex .btn-outline-success:hover{ /*검색버튼*/
+    background-color: transparent;
+    color: white;
+}
+.back{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3em;
+    width: 3em;
+    position: fixed;
+    bottom: 1em;
+    left: 1em;
+    border: 3px solid RGB(33, 37, 41);
+    border-radius: 10%;
+    color: white;
+    background-color: RGB(33, 37, 41);
+  }

@@ -1,0 +1,108 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+<!--blog/base.html 상속..-->
+
+
+{% block main_area %}
+<div id="post-area">
+    <!--포스트(게시물) 영역-->
+    <!--{% if post.category %}
+        <span class="badge badge-secondary float-right">{{ post.category }}</span>
+    {% else %}
+        <span class="badge badge-secondary float-right">미분류</span>
+    {% endif %}-->
+    {% if post.카테고리 %}
+    <p>{{ post.카테고리 }}</p>
+    {% else %}
+    <p>미분류</p>
+    {% endif %}
+    <!-- Title -->
+    <h1 class="mt-4">{{post.제목}}</h1>
+
+    {% if user.is_authenticated and user == post.작성자 %}
+    <!--사용자가 로그인을 했고 게시물 작성자와 같으면 Edit Post버튼이 보이도록 설정-->
+    <a class="btn btn-info btn-sm" href="/blog/update_post/{{ post.pk }}/" role="button" style="background-color: RGB(33, 37, 41); border:RGB(33, 37, 41); color: white;"><i
+            class="fas fa-pen"></i> 수정</a>
+
+    <a class="btn btn-info btn-sm" href="/blog/delete_post/{{ post.pk }}/" role="button" style="background-color: RGB(33, 37, 41); border:RGB(33, 37, 41); color: white;"><i
+            class="fas fa-pen"></i> 삭제</a>
+    {% else %}
+        
+    {% endif %}
+    <!-- Data/Time -->
+    <small>작성일 : {{post.작성일|date:'y.m.d'}}</small>
+    <!--게시물 작성 날짜, 시간 표시-->
+    <!-- Preview Image-->
+    {% if post.대표사진 %}
+    <!--게시물의 대표 사진 있을 경우-->
+    <div class="card mb-4">
+        <img class="img-fluid rounded" src="{{post.대표사진.url}}">
+        {% endif %}
+    </div>
+
+    <!--Post Content-->
+    <div class="card-body">
+        <p>{{post.내용}}</p>
+        {% if post.file_upload %}
+        <a href="{{post.file_upload.url}}" class="btn btn-outline-dark" role="button" download>Download</a>
+        {% endif %}
+    </div>
+</div>
+<hr>
+<div id="comment-area">
+
+    {% if post.comment_set.exists %}
+    <!--포스트에 comment가 있으면-->
+    {% for comment in post.comment_set.iterator %}
+    <!--모든 comment를 불러서 for문으로 반복-->
+    <!--Single Comment-->
+    <div class="media mb-4" id="comment-{{ comment.pk }}">
+        <!--작성자 이름과 작성 날짜 같이 나오도록 설정-->
+        
+        <p>{{ comment.내용 | linebreaks }}</p>
+        <!--linebreaks는 줄바꿈 기능(댓글에 줄바꿈 기능이 필요하므로)-->
+        <small class="text-muted">{{ comment.작성일|date:'y.m.d' }}</small>
+        {% if user.is_authenticated and comment.작성자 == user %}
+        <div class="float-right">
+            <a role="button" id="comment-{{ comment.pk }}-delete-modal-btn" class="btn btn-sm btn-danger"
+                href="/blog/delete_comment/{{ comment.pk }}/" style="background-color: RGB(33, 37, 41); border:RGB(33, 37, 41); color: white;"><small>삭제</small></a>
+        </div>
+        {% endif %}
+        
+    </div>
+    <hr>
+    {% endfor %}
+    {% endif %}
+    <!--Comment Form-->
+        <div class="comment-body">
+            {% if user.is_authenticated %}
+            <!--로그인했을 때만 댓글 폼이 보이도록-->
+            <form id="comment-form" method="POST" action="{{ post.get_absolute_url }}new_comment/">
+                <!--전달 방식은 POST방식, -->
+                {% csrf_token %}
+                <div class="form-group">
+                    <!--댓글 작성 폼 생성-->
+                    {{ comment_form | crispy }}
+                </div>
+                <button type="button" onclick="moveHome();" class="btn btn-primary" style="background-color: RGB(33, 37, 41); border:RGB(33, 37, 41); color: white;">작성</button>
+            </form>
+            {% else %}
+            <!--로그인하지 않았으면 로그인 모달이 뜨도록 설정(버튼 문구는 Log in and leave a comment)-->
+            <a role="button" class="btn btn-outline-dark btn-block btn-sm" href="{% url 'login' %}" data-toggle="modal"
+                data-target="#loginModal">Log in and leave a comment</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <script type="text/javaScript">
+        function moveHome(){
+            location.href = "{{ post.get_absolute_url }}new_comment/";
+        }
+        </script>
+        
+    
+</div>
+<hr />
+
+
+{% endblock %}

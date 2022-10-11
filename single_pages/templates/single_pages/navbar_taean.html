@@ -1,0 +1,116 @@
+{% load socialaccount %}
+
+{% include 'single_pages/navbar_css.html' %}
+
+<nav style="position: relative;" class="navbar navbar-default">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">태안</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a style="color: white;" class="nav-link active dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-current="false page" href="#">학교정보</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item"
+                    href="https://www.hanseo.ac.kr/schdList.do?m=0405&s=hs">학사일정</a></li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="/major/">학과정보</a></li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="/faculty_number_list/">학과 부서별 연락처</a></li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="/school_number/">학교 부서별 연락처</a></li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="/blog/dongari/">동아리 정보</a></li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="https://www.hanseo.ac.kr/food/foodView.do?m=0504&s=hs">학식 정보</a></li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="/blog/">소통방</a></li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="https://nportal.hanseo.ac.kr/">한서 포탈</a></li>
+        </ul>
+    </li>
+    <li class="nav-item dropdown">
+        <a style="color: white;" class="nav-link active dropdown-toggle" role="button"
+            data-bs-toggle="dropdown" aria-current="false page" href="#">통합 및 지역버스</a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="https://hsu.busro.net/rsvc/">셔틀버스 예매 및 결제</a></li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="{% url 'bus_tae' %}">지역버스 시간정보</a></li>
+        </ul>
+    </li>
+    <li class="nav-item dropdown">
+        <a style="color: white;" class="nav-link dropdown-toggle" href="#" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            학교주변 정보
+        </a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">서비스 준비중 ...</a></li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+            
+            <!--<li><hr class="dropdown-divider"></li>-->
+        </ul>
+    </li>
+    <li class="nav-item dropdown">
+        <a style="color: white;" class="nav-link active dropdown-toggle" role="button"
+            data-bs-toggle="dropdown" aria-current="false page" href="#">캠퍼스 맵</a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item"
+                    href="https://www.hanseo.ac.kr/sub/info.do?page=011002_1&m=011002&s=hs">캠퍼스 약도</a>
+            </li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="https://map.naver.com/v5/entry/place/17676731?p=JtUCY_YG02GJCmHAeEh52w,57.09,10,80,Float&c=14058511.8483995,4382736.0446711,15,0,0,0,dh">로드뷰</a></li>
+        </ul>
+    </li>
+    <li class="nav-item dropdown">
+        <a style="color: white;" class="nav-link active dropdown-toggle" role="button" data-bs-toggle="dropdown"
+          aria-current="false page" href="#">계정 관리</a>
+        <ul class="dropdown-menu">
+          {% if user.is_authenticated %}
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item" href="/blog/logout/">Log Out</a></li>
+        </li>
+        <li><a class="dropdown-item" href="/blog/update_info/">회원정보 수정</a></li>
+        <li><a class="dropdown-item" href="{% url 'password_change' %}">비밀번호 수정</a></li>
+        <li><a class="dropdown-item" href="/blog/mypost/">내가 쓴 글</a></li>
+          {% else %}
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item" href="/blog/login/">Log In</a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item" href="/blog/signup/">Sign Up</a></li>
+          {% endif %}
+      </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  

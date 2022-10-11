@@ -1,0 +1,32 @@
+
+ <!-- Search widget-->
+ <div class="card my-4">
+    <h5 class="card-header">게시물 검색</h5>
+    <div class="card-body">
+        <div class="input-group">
+            <input class="form-control" type="text" placeholder="게시물 제목 " id="search-input">
+            <!--input 요소 안에 있는 값을 가져와서 검색하기 위해 id추가-->
+            <button class="btn btn-primary" id="button-search" type="button" 
+            onclick="searchPost();"  style="background-color: RGB(33, 37, 41); border:RGB(33, 37, 41); color: white;">검색</button>
+            <!--자바스크립을 만든 search_Post함수 실행-->
+        </div>
+    </div>
+</div>
+<script>
+    function searchPost() {
+        let searchValue = document.getElementById('search-input').value.trim();
+        if (searchValue.length > 1) {
+            location.href = "/blog/search/" + searchValue + "/";
+        }
+        else {
+            alert('검색어(' + searchValue + ')가 너무 짧습니다.');
+        }
+    };
+
+    document.getElementById('search-input').addEventListener('keyup', function (event) {
+        if (event.key === 'Enter') {
+            33
+            searchPost();
+        }
+    });
+</script>

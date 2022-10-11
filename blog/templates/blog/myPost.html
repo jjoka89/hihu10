@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>post_comment</title>
+</head>
+
+<body>
+    {% extends 'blog/base.html' %}
+    <!--blog/base.html 상속.-->
+    {% block main_area %}
+    <!--main_area영역 시작-->
+
+    <!-- Categories widget-->
+    
+    
+    
+    <div style="text-align:center">
+        <h2>내가 쓴 글</h2>
+    </div>
+    
+    <hr>
+
+
+    {% for post in posts %}     <!--게시물이 있는 개수 만큼 반복-->
+    <div class="container my-4" id="post-{{post.pk}}" style="text-align:center">
+        <div class="container-body">
+            <h5 class="container-title" href="{{post.get_absolute_url}}"><a href="{{post.get_absolute_url}}" class="btn btn-primary" 
+                style="background-color: RGB(33, 37, 41); border: RGB(33, 37, 41); width: 75%;">{{post.제목}}</a></h5>   <!--카드 제목 영역에 게시물 제목 삽입-->
+             <!--자세히 보기 버튼 클릭 시 디테일 페이지로 이동-->
+        </div>
+    <!-- post 아래 부분에 게시물 생성 날짜와 작성자명을 생성합니다. -->
+        <div class="container-footer text-muted">
+            {{post.작성일|date:'y.m.d'}}
+        </div>
+    </div>
+    {% endfor %}
+
+
+    {% endblock %}
+    <!--main_area영역 끝-->
+</body>
+
+</html>

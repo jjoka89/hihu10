@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.101.0">
+    <title>학부별 연락처</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/carousel/">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    
+
+<body>
+    {% include 'blog/navbar.html' %}
+
+    <main>
+        <!-- Wrap the rest of the page in another container to center all the content. -->
+
+        <div class="container marketing" style="margin-top: 5vh; text-align: center;">
+            <!-- Three columns of text below the carousel -->
+            {% for p in faculty_list %}
+            <div class="row">
+                <div class="col-lg-4">
+                    <p><a class="btn btn-secondary" href="{{ p.get_absolute_url }}" 
+                        style="width: 75%; background-color: RGB(33, 37, 41); border:RGB(33, 37, 41); color: white;" >
+                        {{ p.학부 }}연락처</a></p>
+                </div><!-- /.col-lg-4 -->
+            </div>
+            <!-- /END THE FEATURETTES -->
+            {% endfor %}
+        </div>
+        <!-- /.container -->
+
+</body>
+<footer>
+    {% include 'blog/footer.html' %}
+
+</footer>
+</html>

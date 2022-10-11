@@ -1,0 +1,20 @@
+{% extends "blog/base.html" %}
+{% block main_area %}
+<style>
+    footer{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+</style>
+<div class="container my-3">
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <div class="row">
+        <a href="/blog/login/" class="btn btn-primary" style="background-color: RGB(33, 37, 41); border:RGB(33, 37, 41); color: white;">로그인 →</a>
+        <a href="/blog/signup/" class="btn btn-primary" style="background-color: RGB(33, 37, 41); border:RGB(33, 37, 41); color: white;">회원가입 →</a>
+        <a href="/" class="btn btn-primary" style="background-color: RGB(33, 37, 41); border:RGB(33, 37, 41); color: white;">홈 →</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

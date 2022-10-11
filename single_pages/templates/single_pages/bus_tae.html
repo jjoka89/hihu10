@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.101.0">
+    <title>태안버스시간표</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/list-groups/">
+    <link rel="stylesheet" href="hihucss/footer.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <style>
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+      body{
+        background-color: RGB(33, 37, 41);
+      }
+      .title{
+        margin-right: 7%;
+        margin-left: 7%;
+        margin-top: 7%;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+      }
+      .list-group{
+        padding-top: 50%;
+        justify-content: center;
+      }
+      .modal .modal-dialog .modal-content{ /*모달 위치*/
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        margin: 0 auto;
+        padding: 0 auto;
+      }
+      .modal-header{ /* 모달 제목 */
+        justify-content: center;
+        font-size: 6vmin;
+        font-weight: bold;
+      }
+      .position-relative .busInfor{
+        text-decoration: none;
+        color: RGB(33, 37, 41);
+        justify-content: center;
+        text-align: center;
+      } 
+      .table{
+        text-align: center;
+      }
+      .position-relative .list-group-item{
+        text-align: center;
+      }
+      .pe-5{
+        padding: 3rem;
+      }
+      .table .cen{
+        vertical-align: middle;
+      }
+      .list-group .btn{
+        padding: 0;
+      }
+      .hantoseo .modal-content{
+        position: fixed;
+        overflow: hidden;
+        overflow-y: auto;
+        max-height: 80%;
+      }
+      .haetohan .modal-content{
+        position: fixed;
+        overflow: hidden;
+        overflow-y: auto;
+        max-height: 80%;
+      }
+      .seotohan .modal-content{
+        position: fixed;
+        overflow: hidden;
+        overflow-y: auto;
+        max-height: 80%;
+      }
+      .que{
+        font-size: 1.3rem;
+        float: right;
+        border: 0.8vmin solid gray;
+        border-radius: 30%;
+      }
+      .que .busInforque{
+        text-decoration: none;
+      }
+      </style>
+
+    <!-- Custom styles for this template -->
+    <link href="list-groups.css" rel="stylesheet">
+  </head>
+  <body>
+    
+    <h1 class="title">
+      태안버스시간표
+      <div class="que">
+        <a class="busInforque" href="#queModal" data-bs-toggle="modal">&#10068</a>
+      </div>
+ </h1>
+
+    <div class="list-group list-group-radio d-grid gap-2 border-1 w-auto">
+
+        <div class="btn position-relative">
+            <label class="list-group-item py-3 pe-5" for="listGroupRadioGrid1">
+            <strong class="fw-semibold">
+               <a class="busInfor" href="#mainModal_1" data-bs-toggle="modal"> 한서대 출발 </a>
+            </strong>
+            </label>
+        </div>
+
+        <div class="btn position-relative">
+            <label class="list-group-item py-3 pe-5" for="listGroupRadioGrid4">
+            <strong class="fw-semibold">
+               <a class="busInfor" href="#mainModal_4" data-bs-toggle="modal"> 곰섬 출발 </a>
+            </strong>
+            </label>
+        </div>
+    </div>
+
+    <!-- Modal question mark -->
+    <div class="modal" id="queModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">&#8251 도움말</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>태안 버스정보의 추가/수정이 필요할 시 메일 부탁드립니다.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">확인</button>
+          </div>
+        </div>
+      </div>
+    </div>    
+
+    <!-- Modal hanseo -->
+    <div class="modal fade" id="mainModal_1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content modal-lg">
+            <div class="modal-header">
+              <caption class="modal-title" id="exampleModalLabel">한서대 출발</caption>
+            </div>
+            <table class="table form-control-sm">
+                <thead>
+                  <tr style="white-space: nowrap;">
+                    <th scope="col">출발시간</th>
+                    <th scope="col">소요시간</th>
+                    <th scope="col">도착지</th>
+                  </tr>
+                </thead>
+                <tbody> 
+                  <tr>
+                    <td>06:50</td>
+                    <td class="cen">약 00분</td>
+                    <td class="cen">곰 섬</td>
+                  </tr>
+                  <tr>
+                    <td>09:50</td>
+                    <td>약 00분</td>
+                    <td>곰 섬, 태 안</td>
+                  </tr>
+                  <tr>
+                    <td>11:55</td>
+                    <td>약 00분</td>
+                    <td>태안터미널</td>
+                  </tr>
+                  <tr>
+                    <td>13:40</td>
+                    <td>약 00분</td>
+                    <td>태안터미널</td>
+                  </tr>
+                  <tr>
+                    <td>15:35</td>
+                    <td>약 00분</td>
+                    <td>태안터미널</td>
+                  </tr>
+                  <tr>
+                    <td>17:40</td>
+                    <td>약 00분</td>
+                    <td>곰 섬, 태 안</td>
+                  </tr>
+                  <tr>
+                    <td>20:00</td>
+                    <td>약 00분</td>
+                    <td>곰 섬, 태 안</td>
+                  </tr>
+
+                </tbody>
+              </table>
+              
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫 기</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- seosan → hanseo -->
+    <div class="seotohan modal fade" id="mainModal_4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content modal-lg">
+            <div class="modal-header">
+              <caption class="modal-title" id="exampleModalLabel">곰섬 출발</caption>
+            </div>
+            <table class="table form-control-sm">
+                <thead>
+                  <tr style="white-space: nowrap;">
+                    <th scope="col">출발시간</th>
+                    <th scope="col">소요시간</th>
+                    <th scope="col">도착지</th>
+                  </tr>
+                </thead>
+                <tbody> 
+                  <tr>
+                    <td>07:00</td>
+                    <td class="cen">약 00분</td>
+                    <td class="cen">태 안</td>
+                  </tr>
+                  <tr>
+                    <td>10:00</td>
+                    <td>약 00분</td>
+                    <td>태 안</td>
+                  </tr>
+                  <tr>
+                    <td>11:45</td>
+                    <td>약 00분</td>
+                    <td>한서대, 태안</td>
+                  </tr>
+                  <tr>
+                    <td>13:30</td>
+                    <td>약 00분</td>
+                    <td>한서대, 태안</td>
+                  </tr>
+                  <tr>
+                    <td>15:25</td>
+                    <td>약 00분</td>
+                    <td>한서대, 태안</td>
+                  </tr>
+                  <tr>
+                    <td>17:35</td>
+                    <td>약 00분</td>
+                    <td>태 안</td>
+                  </tr>
+                  <tr>
+                    <td>20:10</td>
+                    <td>약 00분</td>
+                    <td>태 안</td>
+                  </tr>
+
+                </tbody>
+              </table>
+              
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫 기</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="my-3">
+        <hr class="top">
+        <ul class="nav justify-content-center pb-2 mb-2">
+          <li class="nav-item"><a href="/" class="nav-link px-2 text-muted">홈 화면</a></li>
+          <li class="nav-item"><a href="https://hsu.busro.net:456/rsvc/" class="nav-link px-2 text-muted" >버스예매 바로가기</a></li>
+        </ul>
+        <p class="text-center text-muted">&copy; Hi! Hanseo University ver 2.0</p>
+      </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">    </script>
+
+  </body>
+</html>

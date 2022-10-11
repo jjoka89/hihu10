@@ -1,0 +1,58 @@
+<style>
+    .container-title {
+        margin-top: -5vmin;
+        margin-bottom: 0em;
+    }
+    .container{
+      position: relative;
+      text-align: center;
+    }
+</style>
+{% extends 'blog/base.html' %}   <!--blog/base.html 상속.-->
+{% block main_area %}            <!--main_area영역 시작-->
+
+<!-- Categories widget-->
+<div class="card my-4" id="categories-cards">
+    <h5 class="card-header">게시판 종류</h5>
+    <!--categories카드 header부분에 'Categories'삽입-->
+    <div class="card-body">
+        <div class="row">
+            {% for category in 카테고리 %}
+            <!--categories의 종류만큼 반복-->
+            <li>
+                <a href="{{ category.get_absolute_url }}"  style="text-decoration: none; color: RGB(33, 37, 41);">
+                    {{ category }} ({{ category.post_set.count }})</a>
+                <!--카테고리명과 해당하는 게시물 개수 표시하고 해당부분 누르면 카테고리별 분류된 게시물 페이지로 이동-->
+            </li>
+            {% endfor %}
+            <!--for문 종료-->
+        </div>
+    </div>
+</div>
+{% include 'blog/search_post.html' %}
+{% if user.is_authenticated %}
+    <a class="btn btn-info btn-sm float-right" href="#" role="button" 
+    style="background-color: RGB(33, 37, 41); border:RGB(33, 37, 41); color: white;"><i class="fas fa-pen"></i>글쓰기</a>
+{% endif %}
+<h3>게시물 
+    {% if search_info %}<small class="text-muted">{{ search_info }}</small>{% endif %}
+    {% if 게시물종류 %}<span class="badge bg-secondary">{{ 게시물종류 }}</span>{% endif %}
+</h3>
+{% if post_list.exists %}   <!--게시물 존재할 경우-->
+<!-- Blog post 영역-->
+{% for p in post_list %}     <!--게시물이 있는 개수 만큼 반복-->
+<div class="container my-4" id="post-{{p.pk}}">
+    <div class="container-body">
+        <h5 class="container-title" href="{{p.get_absolute_url}}"><a href="{{p.get_absolute_url}}" class="btn btn-primary" 
+            style="background-color: RGB(33, 37, 41); border: RGB(33, 37, 41); width: 75%;">{{p.제목}}</a></h5>   <!--카드 제목 영역에 게시물 제목 삽입-->
+             <!--자세히 보기 버튼 클릭 시 디테일 페이지로 이동-->
+    </div>
+    <!-- post 아래 부분에 게시물 생성 날짜와 작성자명을 생성합니다. -->
+    <div class="container-footer text-muted">
+        {{p.작성일|date:'y.m.d'}}
+    </div>
+</div>
+{% endfor %}      <!--for문 끝-->
+{% endif %}       <!--if문 끝-->
+
+{% endblock %}   <!--main_area영역 끝-->

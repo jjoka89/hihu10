@@ -1,0 +1,17 @@
+{% extends 'blog/base_full_width.html' %}
+<!--blog/base.html 상속.-->
+{% load crispy_forms_tags %}
+{% block head_title %}Edit Comment - Blog{% endblock %}
+
+{% block main_area %}
+<!--main_area 부분 시작-->
+<form method="post" id="comment-form">{% csrf_token %}
+    <!--enctype는 create_post를 통해 파일도 같이 전송한다는 의미, csrf는 웹 사이트를 CSRK공격으로 보호(폼 이용할 때 사용)-->
+    {{ form | crispy }}
+    <!--게시물 작성하는 폼 생성-->
+    <br/>
+    <button type="submit" class="btn btn-primary" style="background-color: RGB(33, 37, 41); border:RGB(33, 37, 41); color: white;">수정</button>
+    <!--제출 버튼 생성-->
+</form>
+{% endblock %}
+<!--main_area영역끝-->

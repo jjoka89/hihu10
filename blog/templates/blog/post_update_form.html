@@ -1,0 +1,22 @@
+{% extends 'blog/base_full_width.html' %}
+<!--blog/base.html 상속.-->
+{% load crispy_forms_tags %}
+{% load static %}
+<header>
+    {% block head_title %}Edit Post - Blog{% endblock %}
+    <!--페이지 맨 위의 제목을 Blog에서 Create Post - Edit Post로 변경-->
+    <link rel="stylesheet" href="{% static 'blog/bootstrap/bootstrap.min.css' %}" media="screen">
+    <link href="css/blog-post.css" rel="stylesheet">
+</header>
+
+
+{% block main_area %}
+<!--main_area 부분 시작-->
+<form method="post" enctype="multipart/form-data">{% csrf_token %}
+    {{form | crispy}}
+    <!--게시물 수정하는 폼 생성-->
+    <button type="submit" class="btn btn-primary float-right">수정</button>
+    <!--제출 버튼 생성-->
+</form>
+{% endblock %}
+<!--main_area영역끝-->
